@@ -180,6 +180,37 @@ Read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.
 
 ---
 </details><details>
+	<summary> <strong> compression </strong> </summary>	
+
+---
+
+##### Functions:
+
+1. [`HuffDecode`](./compression/huffmancoding.go#L104):  HuffDecode recursively decodes the binary code in, by traversing the Huffman compression tree pointed by root. current stores the current node of the traversing algorithm. out stores the current decoded string.
+2. [`HuffEncode`](./compression/huffmancoding.go#L93):  HuffEncode encodes the string in by applying the mapping defined by codes.
+3. [`HuffEncoding`](./compression/huffmancoding.go#L76):  HuffEncoding recursively traverses the Huffman tree pointed by node to obtain the map codes, that associates a rune with a slice of booleans. Each code is prefixed by prefix and left and right children are labelled with the booleans false and true, respectively.
+4. [`HuffTree`](./compression/huffmancoding.go#L33):  HuffTree returns the root Node of the Huffman tree by compressing listfreq. The compression produces the most optimal code lengths, provided listfreq is ordered, i.e.: listfreq[i] <= listfreq[j], whenever i < j.
+
+---
+##### Types
+
+1. [`Node`](./compression/huffmancoding.go#L17): No description provided.
+
+2. [`SymbolFreq`](./compression/huffmancoding.go#L25): No description provided.
+
+
+---
+</details><details>
+	<summary> <strong> compression_test </strong> </summary>	
+
+---
+
+##### Functions:
+
+1. [`SymbolCountOrd`](./compression/huffmancoding_test.go#L16):  SymbolCountOrd computes sorted symbol-frequency list of input message
+
+---
+</details><details>
 	<summary> <strong> conversion </strong> </summary>	
 
 ---
@@ -560,7 +591,7 @@ Read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.
 
 ---
 
-#####  Package math is a package that contains mathematical algorithms and its different implementations.
+#####  Package math is a package that contains mathematical algorithms and its different implementations. filename : krishnamurthy.go description: A program which contains the function that returns true if a given number is Krishnamurthy number or not. details: A number is a Krishnamurthy number if the sum of all the factorials of the digits is equal to the number. Ex: 1! = 1, 145 = 1! + 4! + 5! author(s): [GooMonk](https://github.com/GooMonk) see krishnamurthy_test.go
 
 ---
 ##### Functions:
@@ -572,19 +603,20 @@ Read our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.
 5. [`DefaultPolynomial`](./math/pollard.go#L16):  DefaultPolynomial is the commonly used polynomial g(x) = (x^2 + 1) mod n
 6. [`FindKthMax`](./math/kthnumber.go#L11):  FindKthMax returns the kth large element given an integer slice with nil `error` if found and returns -1 with `error` `search.ErrNotFound` if not found. NOTE: The `nums` slice gets mutated in the process.
 7. [`FindKthMin`](./math/kthnumber.go#L19):  FindKthMin returns kth small element given an integer slice with nil `error` if found and returns -1 with `error` `search.ErrNotFound` if not found. NOTE: The `nums` slice gets mutated in the process.
-8. [`IsPerfectNumber`](./math/perfectnumber.go#L34):  Checks if inNumber is a perfect number
-9. [`IsPowOfTwoUseLog`](./math/checkisnumberpoweroftwo.go#L10):  IsPowOfTwoUseLog This function checks if a number is a power of two using the logarithm. The limiting degree can be from 0 to 63. See alternatives in the binary package.
-10. [`Lerp`](./math/lerp.go#L5):  Lerp or Linear interpolation This function will return new value in 't' percentage  between 'v0' and 'v1'
-11. [`LiouvilleLambda`](./math/liouville.go#L24):  Lambda is the liouville function This function returns λ(n) for given number
-12. [`Mean`](./math/mean.go#L7): No description provided.
-13. [`Median`](./math/median.go#L12): No description provided.
-14. [`Mode`](./math/mode.go#L19): No description provided.
-15. [`Mu`](./math/mobius.go#L21):  Mu is the Mobius function This function returns μ(n) for given number
-16. [`Phi`](./math/eulertotient.go#L5):  Phi is the Euler totient function. This function computes the number of numbers less then n that are coprime with n.
-17. [`PollardsRhoFactorization`](./math/pollard.go#L29):  PollardsRhoFactorization is an implementation of Pollard's rho factorization algorithm using the default parameters x = y = 2
-18. [`PronicNumber`](./math/pronicnumber.go#L15):  PronicNumber returns true if argument passed to the function is pronic and false otherwise.
-19. [`Sin`](./math/sin.go#L9):  Sin returns the sine of the radian argument x. [See more](https://en.wikipedia.org/wiki/Sine_and_cosine)
-20. [`SumOfProperDivisors`](./math/perfectnumber.go#L17):  Returns the sum of proper divisors of inNumber.
+8. [`IsKrishnamurthyNumber`](./math/krishnamurthy.go#L12):  IsKrishnamurthyNumber returns if the provided number n is a Krishnamurthy number or not.
+9. [`IsPerfectNumber`](./math/perfectnumber.go#L34):  Checks if inNumber is a perfect number
+10. [`IsPowOfTwoUseLog`](./math/checkisnumberpoweroftwo.go#L10):  IsPowOfTwoUseLog This function checks if a number is a power of two using the logarithm. The limiting degree can be from 0 to 63. See alternatives in the binary package.
+11. [`Lerp`](./math/lerp.go#L5):  Lerp or Linear interpolation This function will return new value in 't' percentage  between 'v0' and 'v1'
+12. [`LiouvilleLambda`](./math/liouville.go#L24):  Lambda is the liouville function This function returns λ(n) for given number
+13. [`Mean`](./math/mean.go#L7): No description provided.
+14. [`Median`](./math/median.go#L12): No description provided.
+15. [`Mode`](./math/mode.go#L19): No description provided.
+16. [`Mu`](./math/mobius.go#L21):  Mu is the Mobius function This function returns μ(n) for given number
+17. [`Phi`](./math/eulertotient.go#L5):  Phi is the Euler totient function. This function computes the number of numbers less then n that are coprime with n.
+18. [`PollardsRhoFactorization`](./math/pollard.go#L29):  PollardsRhoFactorization is an implementation of Pollard's rho factorization algorithm using the default parameters x = y = 2
+19. [`PronicNumber`](./math/pronicnumber.go#L15):  PronicNumber returns true if argument passed to the function is pronic and false otherwise.
+20. [`Sin`](./math/sin.go#L9):  Sin returns the sine of the radian argument x. [See more](https://en.wikipedia.org/wiki/Sine_and_cosine)
+21. [`SumOfProperDivisors`](./math/perfectnumber.go#L17):  Returns the sum of proper divisors of inNumber.
 
 ---
 </details><details>
